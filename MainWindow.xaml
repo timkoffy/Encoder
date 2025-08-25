@@ -2,8 +2,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="Encoder.MainWindow"
         Width="400" Height="300"
-        Title="Encoder">
-  <StackPanel>
-    <TextBlock Text="Hello Avalonia!" />
-  </StackPanel>
+        Background="DimGray"
+        Title="Encoder"
+        DataContext="MainWindow">
+    <StackPanel>
+        <Button x:Name="OpenFileButton" Content="Open File" Click="OpenFileButton_Clicked"></Button>
+        <TextBlock x:Name="FileNameTextBlock"></TextBlock>
+        <TextBox x:Name="KeyBox" Watermark="Введите ключ"></TextBox>
+        <Button x:Name="EncodeButton" Content="Encode!" Click="EncodeButton_Clicked"></Button>
+    </StackPanel>
 </Window>

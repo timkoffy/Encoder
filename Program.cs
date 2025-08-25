@@ -6,32 +6,16 @@ class Program
     public static void Main(string[] args)
     {
         BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
-        
-        Console.WriteLine("укажите полный путь до файла...");
-        string PATH = Console.ReadLine();
-
-        if (!File.Exists(PATH)) {
-            Console.WriteLine("файл не найден!");
-            return;
-        }
-
-        Console.WriteLine("введите ключ...");
-        string KEY = StringToBinaryCode(Console.ReadLine());
-        
-        string TEXT = StringToBinaryCode(File.ReadAllText(PATH));
-        
-        while (KEY.Length < TEXT.Length)
+    }
+    
+    public static string EncodeText(string text, string key)
+    {
+        while (key.Length < text.Length)
         {
-            KEY += KEY;
+            key += key;
         }
-
-        string RESULT = DecoderOrEncoder(TEXT, KEY);
-        
-        Console.Clear();
-        Console.WriteLine("укажите полный путь до файла для сохранения...");
-        string PATH2 = Console.ReadLine();
-        
-        File.WriteAllText(PATH2, RESULT);
+        string result = DecoderOrEncoder(text, key);
+        return result;
     }
     public static AppBuilder BuildAvaloniaApp() 
         => AppBuilder.Configure<App>()
@@ -64,6 +48,9 @@ class Program
 
     private static string DecoderOrEncoder(string text, string key)
     {
+        text = StringToBinaryCode(text.TrimEnd('\r', '\n'));
+        key = StringToBinaryCode(key);
+        
         string result = "";
         for (int i = 0; i < text.Length; i++)
         {
