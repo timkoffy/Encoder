@@ -1,10 +1,12 @@
-﻿using System.IO;
-using System.Text;
-
+﻿using System.Text;
+using Avalonia;
+using Encoder;
 class Program
 {
-    public static void Main()
+    public static void Main(string[] args)
     {
+        BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
+        
         Console.WriteLine("укажите полный путь до файла...");
         string PATH = Console.ReadLine();
 
@@ -31,7 +33,11 @@ class Program
         
         File.WriteAllText(PATH2, RESULT);
     }
-
+    public static AppBuilder BuildAvaloniaApp() 
+        => AppBuilder.Configure<App>()
+            .UsePlatformDetect()
+            .LogToTrace();
+    
     private static string BinaryToString(string bin)
     {
         if (bin.Length % 8 != 0) throw new Exception("строка в файле не кратна 8!");
