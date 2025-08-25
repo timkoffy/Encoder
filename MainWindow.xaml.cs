@@ -47,7 +47,7 @@ public class MainWindow : Window
         if (string.IsNullOrEmpty(_fileContent))
         {
             var textBlock = this.FindControl<TextBlock>("FileNameTextBlock");
-            textBlock.Text = "Сначала открой файл!";
+            textBlock.Text = "Open file first!";
             return;
         }
         
@@ -56,7 +56,7 @@ public class MainWindow : Window
         
         if (string.IsNullOrEmpty(_key))
         {
-            textBox.Text = "Напиши сюда код";
+            textBox.Watermark = "Enter key here!";
             return;
         }
         

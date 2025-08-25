@@ -1,14 +1,16 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="Encoder.MainWindow"
-        Width="400" Height="300"
+        Width="500" Height="100"
+        MaxWidth="500" MaxHeight="100" 
+        MinWidth="500" MinHeight="100" 
         Background="DimGray"
         Title="Encoder"
         DataContext="MainWindow">
-    <StackPanel>
-        <Button x:Name="OpenFileButton" Content="Open File" Click="OpenFileButton_Clicked"></Button>
-        <TextBlock x:Name="FileNameTextBlock"></TextBlock>
-        <TextBox x:Name="KeyBox" Watermark="Введите ключ"></TextBox>
-        <Button x:Name="EncodeButton" Content="Encode!" Click="EncodeButton_Clicked"></Button>
-    </StackPanel>
+    <Grid VerticalAlignment="Center" Margin="10" RowSpacing="10" ColumnSpacing="10" RowDefinitions="30 30" ColumnDefinitions="* * *">
+        <Button Grid.Row="0" Grid.Column="0" Width="146" HorizontalContentAlignment="Center" x:Name="OpenFileButton" Content="Open File" Click="OpenFileButton_Clicked"></Button>
+        <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" x:Name="FileNameTextBlock"></TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="KeyBox" Watermark="Enter key"></TextBox>
+        <Button Grid.Row="1" Grid.Column="2" Width="146" HorizontalContentAlignment="Center" x:Name="EncodeButton" Content="Encode" Click="EncodeButton_Clicked"></Button>
+    </Grid>
 </Window>

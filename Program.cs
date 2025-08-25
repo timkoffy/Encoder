@@ -24,7 +24,7 @@ class Program
     
     private static string BinaryToString(string bin)
     {
-        if (bin.Length % 8 != 0) throw new Exception("строка в файле не кратна 8!");
+        if (bin.Length % 8 != 0) throw new Exception("The line in the file is not a multiple of 8.");
         
         List<byte> bytes = new List<byte>();
         
